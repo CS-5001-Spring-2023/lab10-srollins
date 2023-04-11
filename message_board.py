@@ -14,18 +14,31 @@ message_list = []
 
 app = Flask(__name__)
 
+@app.route('/foo/', methods=['GET'])
+def bar():
+	return f'<html>Hello, World!</html>'
+
 @app.route('/messages/', methods=['GET'])
 def messages():
-	# retrieve the query parameter with name 'message'
-	# message will be a list
 	message = request.args.getlist('message')
-	
-	# if the parameter was present
+	message_id = request.args.getlist('message_id')
+
 	if len(message) > 0:
-		# create a new Message object
-		# the value is the item at position 0 of the message list
 		new_message = Message(message[0])
-		# add the new message
 		message_list.append(new_message)
-	# the template is found in the templates directory
+		return render_template('message_board.html', items=message_list)
+		
+	elif len(message_id) > 0:
+		for i in message_list:
+			if i.message_id == int(message_id[0]):
+				result = i
+				break
+		return render_template('message.html', item=result)
+
 	return render_template('message_board.html', items=message_list)
+
+
+
+
+
+

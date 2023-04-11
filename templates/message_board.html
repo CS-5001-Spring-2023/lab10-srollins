@@ -4,8 +4,8 @@
   <h2>Messages:</h2>
    <ul>
    {% for item in items %}
-      <li>{{ item.message }}</li>
-  {% endfor %}
+      <li> <a href="?message_id={{ item.message_id }}">{{ item.message }}</a></li>
+   {% endfor %}
   </ul>
 
   <form action="/messages">
@@ -14,5 +14,4 @@
   	<input type="submit" value="Post">
    </form> 
 
-   
 </html>
