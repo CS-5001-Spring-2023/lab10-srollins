@@ -1,0 +1,13 @@
+<!doctype html>
+	<title>Dictionary Example</title>	
+
+	<h2>Here is an example of iterating over a dictionary: </h2>
+
+	{% for list in items.values() %}		
+		{% for item in list %}
+			{{ item }} <br/>
+		{% endfor %}	
+		<hr/>
+	{% endfor %}
+
+</html>

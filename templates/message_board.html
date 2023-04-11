@@ -4,7 +4,7 @@
   <h2>Messages:</h2>
    <ul>
    {% for item in items %}
-      <li> <a href="?message_id={{ item.message_id }}">{{ item.message }}</a></li>
+      <li> <a href="/message?message_id={{ item.message_id }}">{{ item.message }}</a></li>
    {% endfor %}
   </ul>
 
